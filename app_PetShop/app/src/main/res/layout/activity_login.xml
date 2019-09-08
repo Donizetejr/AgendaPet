@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Activitys.LoginActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="178dp"
+            android:layout_marginBottom="16dp"
+            android:src="@mipmap/ic_launcher_pet" />
+
+    <EditText
+        android:id="@+id/login_txt_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:inputType="textEmailAddress"
+        android:hint="@string/e_mail"
+        android:layout_margin="8dp"/>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/login_txt_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:inputType="textPassword"
+            android:hint="@string/senha"
+            android:layout_margin="8dp"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/login_btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/colorPrimary"
+            style = "@style/TextAppearance.AppCompat.Widget.Button.Colored"/>
+
+        <Button
+            android:id="@+id/login_btn_cadastrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_toStartOf="@id/login_btn_login"
+            android:layout_toLeftOf="@id/login_btn_login"
+            android:background="@color/cardview_light_background"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/cadastrar"/>
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+</ScrollView>
