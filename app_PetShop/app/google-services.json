@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:624954568275:android:86ba3b26308b5c1333a0a6",
         "android_client_info": {
-          "package_name": "com.android.application"
+          "package_name": "com.converter.cambio.app_petshop"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "624954568275-cjfh11ni2hn5nv39m15f037r0gvsfarj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.android.application",
+            "package_name": "com.converter.cambio.app_petshop",
             "certificate_hash": "419c62fd1000ddc7e80593c0aae3bd84ab27371e"
           }
         },
