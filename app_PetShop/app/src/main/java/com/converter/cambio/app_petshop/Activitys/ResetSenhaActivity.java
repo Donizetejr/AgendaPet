@@ -53,7 +53,8 @@ public class ResetSenhaActivity extends AppCompatActivity {
     }
 
     private void alert(String s) {
-        Toast.makeText(ResetSenhaActivity.this, s, Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(ResetSenhaActivity.this, s, Toast.LENGTH_LONG);
+        toast.show();
     }
 
     @Override
@@ -63,7 +64,28 @@ public class ResetSenhaActivity extends AppCompatActivity {
     }
 
     private void inicalizaComponentes() {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
         edtEmail = (EditText) findViewById(R.id.reset_txt_email);
         btnResetSenha = (Button) findViewById(R.id.reset_btn_enviar_email);
+
+       edtEmail = (EditText) findViewById(R.id.reset_txt_email);
+       btnResetSenha = (Button) findViewById(R.id.reset_btn_enviar_email);
+
+=======
+<<<<<<< HEAD
+>>>>>>> master
+        edtEmail = (EditText) findViewById(R.id.reset_txt_email);
+        btnResetSenha = (Button) findViewById(R.id.reset_btn_enviar_email);
+=======
+       edtEmail = (EditText) findViewById(R.id.reset_txt_email);
+       btnResetSenha = (Button) findViewById(R.id.reset_btn_enviar_email);
+<<<<<<< HEAD
+=======
+>>>>>>> master
+>>>>>>> master
+>>>>>>> master
     }
 }
