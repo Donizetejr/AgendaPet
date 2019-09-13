@@ -2,6 +2,7 @@ package com.converter.cambio.app_petshop.Activitys;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.button.MaterialButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -138,8 +139,8 @@ public class LoginActivity extends AppCompatActivity {
     private void inicializaComponentes() {
         txtEmail = findViewById(R.id.login_txt_email);
         txtSenha = findViewById(R.id.login_txt_senha);
-        btnCadastrar = findViewById(R.id.login_btn_cadastrar);
-        btnLogin = findViewById(R.id.login_btn_login);
+        btnCadastrar = (Button) findViewById(R.id.login_btn_cadastrar);
+        btnLogin = (Button) findViewById(R.id.login_btn_login);
         txtEsqueceuSenha = findViewById(R.id.txt_esqueceu_senha);
     }
 }

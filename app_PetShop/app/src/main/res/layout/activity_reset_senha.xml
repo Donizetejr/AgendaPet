@@ -31,7 +31,7 @@
             android:hint="@string/e_mail"
             android:layout_margin="8dp"/>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
                 android:id="@+id/reset_btn_enviar_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

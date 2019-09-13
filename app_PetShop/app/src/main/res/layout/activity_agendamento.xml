@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/age_btn_solicitar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                 android:background="@color/colorPrimary"
                 style = "@style/TextAppearance.AppCompat.Widget.Button.Colored"/>
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/age_btn_limpar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
