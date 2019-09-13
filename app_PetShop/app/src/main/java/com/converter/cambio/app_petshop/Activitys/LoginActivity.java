@@ -1,51 +1,46 @@
 package com.converter.cambio.app_petshop.Activitys;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.converter.cambio.app_petshop.FireBaseConexao;
 import com.converter.cambio.app_petshop.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText txtEmail;
-    private EditText txtSenha;
-    Button btnCadastrar;
-    Button btnLogin;
+    private EditText txtEmail, txtSenha;
+    private TextView txtEsqueceuSenha;
+    Button btnCadastrar, btnLogin;
+
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        inicializaCampos();
-        validaInputUsuario();
+        inicializaComponentes();
 
-        redirecionaParaCadastro();
+        eventosClick();
     }
 
-    private void validaInputUsuario() {
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Editable email = txtEmail.getText();
-                Editable senha = txtSenha.getText();
-
-                boolean emailValido = validaEmail(email);
-                boolean senhaValida = validaSenha(senha);
-                String strMensagem = validaLogin(email, senha, emailValido, senhaValida);
-                validaLogin(email, senha, emailValido, senhaValida);
-
-                Toast.makeText(LoginActivity.this, strMensagem, Toast.LENGTH_LONG).show();
-            }
-        });
+    @Override
+    protected void onStart() {
+        super.onStart();
+        auth = FireBaseConexao.getFirebaseAuth();
     }
 
-    private String validaLogin(Editable email, Editable senha, boolean emailValido, boolean senhaValida) {
+    private String validaLogin(String email, String senha, boolean emailValido, boolean senhaValida) {
 
         String strMensagem = "";
 
@@ -77,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
         return strMensagem;
     }
 
-    private boolean validaEmail(Editable email) {
+    private boolean validaEmail(String email) {
         if(email.toString().contains("@") && email.toString().trim() != "" && email.toString().contains("."))
         {
             return true;
@@ -86,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         return false;
     }
 
-    private boolean validaSenha(Editable senha) {
+    private boolean validaSenha(String senha) {
         if(senha.toString().trim() != "" && senha.toString().trim().length() >= 8)
         {
             return true;
@@ -94,7 +89,17 @@ public class LoginActivity extends AppCompatActivity {
         return false;
     }
 
-    private void redirecionaParaCadastro() {
+    private void eventosClick() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String strEmail = txtEmail.getText().toString().trim();
+                String strSenha = txtSenha.getText().toString().trim();
+
+                loginFirebase(strEmail, strSenha);
+            }
+        });
+
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,13 +107,38 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        txtEsqueceuSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginActivity.this, ResetSenhaActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
-    private void inicializaCampos() {
+    private void loginFirebase(String strEmail, String strSenha) {
+        auth.signInWithEmailAndPassword(strEmail, strSenha)
+                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Intent i = new Intent(LoginActivity.this, PerfilActivity.class);
+                            startActivity(i);
+                        }else{
+                            altertToast("E-mail ou senha inválidos!");
+                        }
+                    }
+                });
+    }
+
+    private void altertToast(String strMsgm){
+        Toast.makeText(LoginActivity.this, strMsgm, Toast.LENGTH_LONG).show();
+    }
+    private void inicializaComponentes() {
         txtEmail = findViewById(R.id.login_txt_email);
         txtSenha = findViewById(R.id.login_txt_senha);
         btnCadastrar = findViewById(R.id.login_btn_cadastrar);
         btnLogin = findViewById(R.id.login_btn_login);
-        btnCadastrar = findViewById(R.id.login_btn_cadastrar);
     }
 }
