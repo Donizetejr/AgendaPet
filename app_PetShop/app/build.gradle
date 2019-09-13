@@ -40,7 +40,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:17.0.0'
     implementation 'com.google.firebase:firebase-auth:15.0.0'
 
-
 }
 apply plugin: 'com.google.gms.google-services'
 
@@ -71,3 +70,4 @@ configurations.all {
 //    implementation 'com.google.firebase:firebase-messaging:20.0.0'
 //}
 //apply plugin: 'com.google.gms.google-services'
+

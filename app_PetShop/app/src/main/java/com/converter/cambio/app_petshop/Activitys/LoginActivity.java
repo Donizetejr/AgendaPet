@@ -140,5 +140,6 @@ public class LoginActivity extends AppCompatActivity {
         txtSenha = findViewById(R.id.login_txt_senha);
         btnCadastrar = findViewById(R.id.login_btn_cadastrar);
         btnLogin = findViewById(R.id.login_btn_login);
+        txtEsqueceuSenha = findViewById(R.id.txt_esqueceu_senha);
     }
 }

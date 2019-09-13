@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activitys.HistoricoActivity"></activity>
+        <activity android:name=".Activitys.ResetSenhaActivity"></activity>
+        <activity android:name=".Activitys.HistoricoActivity" />
         <activity android:name=".Activitys.PerfilActivity" />
         <activity android:name=".Activitys.MapServicosActivity" />
         <activity android:name=".Activitys.SobreActivity" />
