@@ -1,8 +1,8 @@
 package com.converter.cambio.app_petshop.Activitys;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,16 +14,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class ResetSenhaActivity extends AppCompatActivity {
-
+class ResetSenhaActivity extends AppCompatActivity {
     private EditText edtEmail;
     private Button btnResetSenha;
+
     private FirebaseAuth auth;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reset_senha);
+        setContentView(R.layout.activity_login);
         inicalizaComponentes();
         eventosClick();
     }
@@ -40,16 +40,16 @@ public class ResetSenhaActivity extends AppCompatActivity {
 
     private void resetSenha(String strEmail) {
         auth.sendPasswordResetEmail(strEmail)
-                .addOnCompleteListener(ResetSenhaActivity.this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            alert("Um e-mail foi enviado para alterar sua senha.");
-                        }else{
-                            alert("E-mail não encontrado.");
-                        }
+            .addOnCompleteListener(ResetSenhaActivity.this, new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        alert("Um e-mail foi enviado para alterar sua senha.");
+                    }else{
+                        alert("E-mail não encontrado.");
                     }
-                });
+                }
+            });
     }
 
     private void alert(String s) {
@@ -64,10 +64,14 @@ public class ResetSenhaActivity extends AppCompatActivity {
     }
 
     private void inicalizaComponentes() {
+<<<<<<< Updated upstream
         edtEmail = (EditText) findViewById(R.id.reset_txt_email);
         btnResetSenha = (Button) findViewById(R.id.reset_btn_enviar_email);
 
        edtEmail = (EditText) findViewById(R.id.reset_txt_email);
        btnResetSenha = (Button) findViewById(R.id.reset_btn_enviar_email);
+=======
+        //criar layout Resetar Senha
+>>>>>>> Stashed changes
     }
 }
