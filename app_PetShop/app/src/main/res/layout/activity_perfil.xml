@@ -72,7 +72,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/alterar"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"
+                android:textSize="18dp"
+                style="@style/Widget.MaterialComponents.Button"/>
 
         </RelativeLayout>
 

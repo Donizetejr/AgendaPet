@@ -49,7 +49,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="20dp"
-                android:text="Enviar"/>
+                android:text="Enviar"
+                android:textSize="18dp"
+                style="@style/Widget.MaterialComponents.Button"
+                android:textColor="@color/colorPrimary"/>
         </RelativeLayout>
 
 

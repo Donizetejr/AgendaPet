@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="178dp"
             android:layout_marginBottom="16dp"
-            android:src="@mipmap/ic_launcher_foreground" />
+            android:src="@drawable/logo_app" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,15 +26,16 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.google.android.material.button.MaterialButton
+            <android.support.design.button.MaterialButton
                 android:id="@+id/sob_btn_agendamento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/agendamento"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:background="@color/colorPrimary"
-                style="@style/Widget.MaterialComponents.Button.TextButton"/>
+                android:layout_margin="20dp"
+                android:textSize="18dp"
+                style="@style/Widget.MaterialComponents.Button"/>
         </RelativeLayout>
 
     </LinearLayout>

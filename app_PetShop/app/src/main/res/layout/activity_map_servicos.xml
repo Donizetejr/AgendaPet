@@ -34,7 +34,10 @@
                 android:text="Agendar"
                 android:layout_margin="20dp"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"
+                android:textSize="18dp"
+                style="@style/Widget.MaterialComponents.Button"
+                android:textColor="@color/colorPrimary"/>
 
         </RelativeLayout>
 

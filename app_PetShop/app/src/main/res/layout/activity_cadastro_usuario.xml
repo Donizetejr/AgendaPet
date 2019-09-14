@@ -73,7 +73,8 @@
                 android:text="@string/cadastrar"
                 android:layout_margin="20dp"
                 android:layout_alignParentEnd="true"
-                style = "@style/TextAppearance.AppCompat.Widget.Button.Colored"/>
+                android:textSize="18dp"
+                style="@style/Widget.MaterialComponents.Button"/>
 
         </RelativeLayout>
 
