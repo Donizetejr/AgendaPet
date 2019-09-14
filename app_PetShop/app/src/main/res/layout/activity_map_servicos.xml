@@ -3,7 +3,7 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Activitys.MapServicosActivity">
+    tools:context=".Activitys.Cliente.LocalizaPetSopActivity">
 
 
     <LinearLayout
@@ -34,10 +34,8 @@
                 android:text="Agendar"
                 android:layout_margin="20dp"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:textSize="18dp"
-                style="@style/Widget.MaterialComponents.Button"
-                android:textColor="@color/colorPrimary"/>
+                style="@style/Widget.MaterialComponents.Button"/>
 
         </RelativeLayout>
 

@@ -1,4 +1,4 @@
-package com.converter.cambio.app_petshop.Activitys;
+package com.converter.cambio.app_petshop.Activitys.Cliente;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,9 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
+import com.converter.cambio.app_petshop.Activitys.SobreActivity;
 import com.converter.cambio.app_petshop.R;
 
-public class MenuLateralActivity extends AppCompatActivity
+public class PaginaPrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -32,7 +33,7 @@ public class MenuLateralActivity extends AppCompatActivity
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                Intent intent = new Intent(MenuLateralActivity.this, MapServicosActivity.class);
+                Intent intent = new Intent(PaginaPrincipalActivity.this, LocalizaPetSopActivity.class);
                 startActivity(intent);
             }
         });
@@ -86,20 +87,20 @@ public class MenuLateralActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_agendamento) {
-            Intent intent = new Intent(MenuLateralActivity.this, AgendamentoActivity.class);
+            Intent intent = new Intent(PaginaPrincipalActivity.this, AgendamentoActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_historico) {
-            Intent intent = new Intent(MenuLateralActivity.this, HistoricoActivity.class);
+            Intent intent = new Intent(PaginaPrincipalActivity.this, HistoricoAgendamentosActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_perfil) {
-            Intent intent = new Intent(MenuLateralActivity.this, PerfilActivity.class);
+            Intent intent = new Intent(PaginaPrincipalActivity.this, PerfilActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_sobre) {
-            Intent intent = new Intent(MenuLateralActivity.this, SobreActivity.class);
+            Intent intent = new Intent(PaginaPrincipalActivity.this, SobreActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_sair) {
-            Intent intent = new Intent(MenuLateralActivity.this, LoginActivity.class);
+            Intent intent = new Intent(PaginaPrincipalActivity.this, LoginClienteActivity.class);
             startActivity(intent);
         }
 

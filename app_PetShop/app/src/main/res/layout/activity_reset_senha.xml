@@ -33,11 +33,11 @@
 
 
         <TextView
-                android:id="@+id/txt_esqueceu_senha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            android:id="@+id/txt_esqueceu_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="20dp"
-                android:text="Esqueceu senha"/>
+            android:text="Esqueceu senha"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"

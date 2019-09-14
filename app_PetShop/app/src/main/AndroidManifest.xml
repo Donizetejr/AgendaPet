@@ -2,25 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.converter.cambio.app_petshop">
+    <uses-permission android:name="android.permission.INTERNET"/>-
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/agenda_dog"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activitys.HistoricoActivity"></activity>
-        <activity android:name=".Activitys.PerfilActivity" />
-        <activity android:name=".Activitys.MapServicosActivity" />
+        <activity android:name=".Activitys.TipoLoginActivity"></activity>
+        <activity android:name=".Activitys.Cliente.CadastroPetActivity" />
+        <activity android:name=".Activitys.ResetSenhaActivity" />
+        <activity android:name=".Activitys.Cliente.HistoricoAgendamentosActivity" />
+        <activity android:name=".Activitys.Cliente.PerfilActivity" />
+        <activity android:name=".Activitys.Cliente.LocalizaPetSopActivity" />
         <activity android:name=".Activitys.SobreActivity" />
-        <activity android:name=".Activitys.CadastroUsuarioActivity" />
-        <activity android:name=".Activitys.AgendamentoActivity" />
+        <activity android:name=".Activitys.Cliente.CadastroClienteActivity" />
+        <activity android:name=".Activitys.Cliente.AgendamentoActivity" />
         <activity
-            android:name=".Activitys.MenuLateralActivity"
+            android:name=".Activitys.Cliente.PaginaPrincipalActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activitys.LoginActivity">
+        <activity android:name=".Activitys.Cliente.LoginClienteActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
