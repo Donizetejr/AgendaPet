@@ -1,16 +1,12 @@
-package com.converter.cambio.app_petshop.Activitys;
+package com.converter.cambio.app_petshop.Activitys.Cliente;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.button.MaterialButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,21 +25,8 @@ public class AgendamentoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agendamento);
         inicializaCampos();
-    }
-
-    @Override
-    public View onCreateView(String name, Context context, AttributeSet attrs) {
-        return super.onCreateView(name, context, attrs);
-    }
-
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.activity_agendamento, container, false);
-
-        inicializaCampos();
+        configuraNavBar();
         eventosClick();
-
-        return view;
     }
 
     private void eventosClick() {
@@ -60,11 +43,32 @@ public class AgendamentoActivity extends AppCompatActivity {
         btnSolicitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AgendamentoActivity.this, MenuLateralActivity.class);
+                Intent intent = new Intent(AgendamentoActivity.this, PaginaPrincipalActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
+    }
+
+    private void configuraNavBar() {
+        setTitle("Agendamento");
+        ActionBar actionBar = getSupportActionBar(); //instancia objt da BAR
+        actionBar.setDisplayHomeAsUpEnabled(true); //exibe o icone
+        actionBar.setHomeButtonEnabled(true); //habilita click
+    }
+
+    //Para inserir a ação e selecionar para qual página voltar...
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { //Botão adicional na ToolBar
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(AgendamentoActivity.this, LocalizaPetSopActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            default:break;
+        }
+        return true;
     }
 
     private void inicializaCampos() {

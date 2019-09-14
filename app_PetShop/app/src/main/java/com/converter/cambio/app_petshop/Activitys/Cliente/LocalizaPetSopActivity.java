@@ -1,21 +1,18 @@
-package com.converter.cambio.app_petshop.Activitys;
+package com.converter.cambio.app_petshop.Activitys.Cliente;
 
 import android.content.Intent;
+import android.support.design.button.MaterialButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.converter.cambio.app_petshop.R;
 
-public class MapServicosActivity extends AppCompatActivity {
+public class LocalizaPetSopActivity extends AppCompatActivity {
 
     private Spinner spnServicos;
-    private Button btnAgendar;
+    private MaterialButton btnAgendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +24,7 @@ public class MapServicosActivity extends AppCompatActivity {
         btnAgendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MapServicosActivity.this, AgendamentoActivity.class);
+                Intent intent = new Intent(LocalizaPetSopActivity.this, AgendamentoActivity.class);
                 startActivity(intent);
             }
         });

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activitys.Cliente.CadastroClienteActivity">
+    tools:context=".Activitys.Cliente.CadastroPetActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_cliente" />
+            android:src="@drawable/cao" />
 
         <android.support.design.widget.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -80,5 +80,4 @@
 
 
     </LinearLayout>
-
 </ScrollView>

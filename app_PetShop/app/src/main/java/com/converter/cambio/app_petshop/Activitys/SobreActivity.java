@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.converter.cambio.app_petshop.Activitys.Cliente.PaginaPrincipalActivity;
 import com.converter.cambio.app_petshop.R;
 
 public class SobreActivity extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class SobreActivity extends AppCompatActivity {
         btnAgendamento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SobreActivity.this, MenuLateralActivity.class);
+                Intent intent = new Intent(SobreActivity.this, PaginaPrincipalActivity.class);
                 startActivity(intent);
             }
         });
