@@ -66,14 +66,6 @@
             android:background="@color/cardview_light_background"
             android:textColor="@color/colorPrimary"
             android:text="@string/cadastrar"/>
-
-        <TextView
-            android:id="@+id/txt_esqueceu_senha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Esqueceu a senha"
-            android:paddingTop="12dp"
-            android:textColor="@color/colorPrimaryDark"/>
     </RelativeLayout>
 
 
