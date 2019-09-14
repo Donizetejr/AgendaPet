@@ -64,14 +64,7 @@ class ResetSenhaActivity extends AppCompatActivity {
     }
 
     private void inicalizaComponentes() {
-<<<<<<< Updated upstream
         edtEmail = (EditText) findViewById(R.id.reset_txt_email);
         btnResetSenha = (Button) findViewById(R.id.reset_btn_enviar_email);
-
-       edtEmail = (EditText) findViewById(R.id.reset_txt_email);
-       btnResetSenha = (Button) findViewById(R.id.reset_btn_enviar_email);
-=======
-        //criar layout Resetar Senha
->>>>>>> Stashed changes
     }
 }

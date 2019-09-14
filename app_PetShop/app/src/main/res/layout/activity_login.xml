@@ -55,6 +55,12 @@
             android:background="@color/colorPrimary"
             style = "@style/TextAppearance.AppCompat.Widget.Button.Colored"/>
 
+        <TextView
+            android:id="@+id/txt_esqueceu_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Esqueceu senha"/>
+
         <Button
             android:id="@+id/login_btn_cadastrar"
             android:layout_width="wrap_content"
