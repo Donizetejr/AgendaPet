@@ -18,57 +18,69 @@
             android:layout_marginBottom="16dp"
             android:src="@mipmap/ic_launcher_pet" />
 
-    <EditText
-        android:id="@+id/login_txt_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="12dp"
-        android:inputType="textEmailAddress"
-        android:hint="@string/e_mail"
-        android:layout_margin="8dp"/>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true">
-
-        <EditText
-            android:id="@+id/login_txt_senha"
+        <android.support.design.widget.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:inputType="textPassword"
-            android:hint="@string/senha"
-            android:layout_margin="8dp"/>
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/login_txt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/e_mail" />
+        </android.support.design.widget.TextInputLayout>
 
-        <Button
-            android:id="@+id/login_btn_login"
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:background="@color/colorPrimary"
-            style = "@style/TextAppearance.AppCompat.Widget.Button.Colored"/>
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp">
 
-        <Button
-            android:id="@+id/login_btn_cadastrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_toStartOf="@id/login_btn_login"
-            android:layout_toLeftOf="@id/login_btn_login"
-            android:background="@color/cardview_light_background"
-            android:textColor="@color/colorPrimary"
-            android:text="@string/cadastrar"/>
-    </RelativeLayout>
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/login_txt_senha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/senha" />
+        </android.support.design.widget.TextInputLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</LinearLayout>
+            <android.support.design.button.MaterialButton
+                android:id="@+id/login_btn_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/login"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"/>
 
+            <TextView
+                android:id="@+id/txt_esqueceu_senha"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:textSize="16sp"
+                android:text="Esqueceu senha"/>
+
+            <android.support.design.button.MaterialButton
+                android:id="@+id/login_btn_cadastrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_toStartOf="@id/login_btn_login"
+                android:layout_toLeftOf="@id/login_btn_login"
+                android:background="@color/cardview_light_background"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/cadastrar"/>
+        </RelativeLayout>
+    </LinearLayout>
 </ScrollView>

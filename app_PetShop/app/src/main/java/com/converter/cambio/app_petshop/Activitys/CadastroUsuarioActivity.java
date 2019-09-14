@@ -1,10 +1,16 @@
 package com.converter.cambio.app_petshop.Activitys;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.button.MaterialButton;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,7 +23,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
-    private Button btnCadastrar;
+    private MaterialButton btnCadastrar;
     private EditText edtEmail, edtNome, edtSenha;
     private FirebaseAuth auth;
 
@@ -28,6 +34,16 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         inicializaComponentes();
 
         eventoClicks();
+    }
+
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.activity_agendamento, container, false);
+
+        inicializaComponentes();
+        eventoClicks();
+
+        return view;
     }
 
     @Override
