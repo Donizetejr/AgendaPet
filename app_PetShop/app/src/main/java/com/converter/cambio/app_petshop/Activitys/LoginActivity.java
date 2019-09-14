@@ -139,13 +139,10 @@ public class LoginActivity extends AppCompatActivity {
     private void inicializaComponentes() {
         txtEmail = findViewById(R.id.login_txt_email);
         txtSenha = findViewById(R.id.login_txt_senha);
-<<<<<<< Updated upstream
+
         btnCadastrar = (Button) findViewById(R.id.login_btn_cadastrar);
         btnLogin = (Button) findViewById(R.id.login_btn_login);
         txtEsqueceuSenha = findViewById(R.id.txt_esqueceu_senha);
-=======
-        btnCadastrar = findViewById(R.id.login_btn_cadastrar);
-        btnLogin = findViewById(R.id.login_btn_login);
->>>>>>> Stashed changes
+
     }
 }
