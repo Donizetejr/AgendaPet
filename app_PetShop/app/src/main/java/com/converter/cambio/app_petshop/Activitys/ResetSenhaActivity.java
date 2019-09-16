@@ -70,7 +70,7 @@ public class ResetSenhaActivity extends AppCompatActivity {
     }
 
     private void  alertDialog(String strTitle, String strMsg){
-        new AlertDialog.Builder(this)
+        new AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert)
                 .setTitle(strTitle)
                 .setMessage(strMsg)
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {

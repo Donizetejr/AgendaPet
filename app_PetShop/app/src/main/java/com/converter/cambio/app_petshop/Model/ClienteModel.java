@@ -2,15 +2,32 @@ package com.converter.cambio.app_petshop.Model;
 
 public class ClienteModel extends PetModel{
     private  int cli_id;
-    private long cli_token;
-    private String cli_auth_key;
     private String cli_cpf;
     private String cli_nome;
     private String cli_telefone;
     private String cli_email;
-    private String senha;
+    private String cli_senha;
     private String cli_endereco;
-    private PetModel pet_nome;
+    private int _cli_pet_id;
+
+    //    private long cli_token;
+    //    private String cli_auth_key;
+
+//    public long getCli_token() {
+//        return cli_token;
+//    }
+//
+//    public void setCli_token(long cli_token) {
+//        this.cli_token = cli_token;
+//    }
+
+//    public String getCli_auth_key() {
+//        return cli_auth_key;
+//    }
+//
+//    public void setCli_auth_key(String cli_auth_key) {
+//        this.cli_auth_key = cli_auth_key;
+//    }
 
     public int getCli_id() {
         return cli_id;
@@ -18,22 +35,6 @@ public class ClienteModel extends PetModel{
 
     public void setCli_id(int cli_id) {
         this.cli_id = cli_id;
-    }
-
-    public long getCli_token() {
-        return cli_token;
-    }
-
-    public void setCli_token(long cli_token) {
-        this.cli_token = cli_token;
-    }
-
-    public String getCli_auth_key() {
-        return cli_auth_key;
-    }
-
-    public void setCli_auth_key(String cli_auth_key) {
-        this.cli_auth_key = cli_auth_key;
     }
 
     public String getCli_cpf() {
@@ -68,12 +69,12 @@ public class ClienteModel extends PetModel{
         this.cli_email = cli_email;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getCli_senha() {
+        return cli_senha;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setCli_senha(String cli_senha) {
+        this.cli_senha = cli_senha;
     }
 
     public String getCli_endereco() {
@@ -84,11 +85,11 @@ public class ClienteModel extends PetModel{
         this.cli_endereco = cli_endereco;
     }
 
-    public PetModel getPet_nome() {
-        return pet_nome;
+    public int get_cli_pet_id() {
+        return _cli_pet_id;
     }
 
-    public void setPet_nome(PetModel pet_nome) {
-        this.pet_nome = pet_nome;
+    public void set_cli_pet_id(int _cli_pet_id) {
+        this._cli_pet_id = _cli_pet_id;
     }
 }

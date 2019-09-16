@@ -1,7 +1,9 @@
 package com.converter.cambio.app_petshop.Activitys.Cliente;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -51,7 +53,17 @@ public class PerfilActivity extends AppCompatActivity {
             edtNome.setText("Digite um nome");
             edtEmail.setText(user.getEmail());
         }
+    }
 
+    private void  alertDialog(String strTitle, String strMsg){
+        new AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert)
+                .setTitle(strTitle)
+                .setMessage(strMsg)
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    } }).show();
     }
 
     private void configuraNavBar() {

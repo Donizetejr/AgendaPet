@@ -1,9 +1,11 @@
 package com.converter.cambio.app_petshop.Activitys.Cliente;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.button.MaterialButton;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,7 +59,17 @@ public class AgendamentoActivity extends AppCompatActivity {
         actionBar.setHomeButtonEnabled(true); //habilita click
     }
 
-    //Para inserir a ação e selecionar para qual página voltar...
+    private void  alertDialog(String strTitle, String strMsg){
+        new AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert)
+                .setTitle(strTitle)
+                .setMessage(strMsg)
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    } }).show();
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) { //Botão adicional na ToolBar
         switch (item.getItemId()) {

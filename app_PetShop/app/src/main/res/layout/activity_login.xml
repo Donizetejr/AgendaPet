@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="@string/senha" />
+                android:hint="@string/cli_senha" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -87,6 +87,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:textSize="16sp"
-            android:text="Esqueceu senha"/>
+            android:text="Esqueceu cli_senha"/>
     </LinearLayout>
 </ScrollView>

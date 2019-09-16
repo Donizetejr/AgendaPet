@@ -35,8 +35,9 @@
     <string name="agendar">Agendar</string>
     <string name="limpar">Limpar</string>
     <string name="e_mail">E-mail</string>
-    <string name="senha">Senha</string>
+    <string name="cli_senha">Senha</string>
     <string name="cadastrar">Cadastrar</string>
     <string name="login">Login</string>
     <string name="agendamento">Agendamento</string>
+    <string name="cpf">CPF</string>
 </resources>

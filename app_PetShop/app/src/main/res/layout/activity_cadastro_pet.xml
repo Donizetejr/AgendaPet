@@ -59,7 +59,7 @@
                 android:id="@+id/cad_usu_ed_senha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/senha" />
+                android:hint="@string/cli_senha" />
         </android.support.design.widget.TextInputLayout>
 
         <RelativeLayout

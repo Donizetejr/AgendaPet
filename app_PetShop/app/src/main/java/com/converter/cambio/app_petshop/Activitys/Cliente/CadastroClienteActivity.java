@@ -14,10 +14,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.converter.cambio.app_petshop.Controller.FireBaseConexao;
+import com.converter.cambio.app_petshop.Controller.ValidaCampos;
 import com.converter.cambio.app_petshop.Model.ClienteModel;
 import com.converter.cambio.app_petshop.R;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.fasterxml.jackson.databind.ser.std.UUIDSerializer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -30,7 +29,7 @@ import java.util.UUID;
 
 public class CadastroClienteActivity extends AppCompatActivity {
     private MaterialButton btnCadastrar;
-    private EditText edtEmail, edtNome, edtSenha;
+    private EditText edtEmail, edtNome, edtSenha, edtCpf, edtTelefone, edtEndereco, estPetId;
     private FirebaseAuth auth;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -38,7 +37,7 @@ public class CadastroClienteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_usuario);
+        setContentView(R.layout.activity_cadastro_cliente);
         inicializaComponentes();
         configuraNavBar();
         inicializarFirebase();
@@ -51,18 +50,8 @@ public class CadastroClienteActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
     }
 
-    private void cadastrarCliente(ClienteModel c){
-        ClienteModel cliente = new ClienteModel();
-        cliente.setCli_id(Integer.parseInt(UUID.randomUUID().toString()));
-        cliente.setCli_nome(c.getCli_nome());
-        cliente.setCli_auth_key(String.valueOf(UUID.randomUUID().clockSequence()+cliente.getCli_id()));
-        cliente.setCli_cpf(c.getCli_cpf());
-        cliente.setCli_email(c.getCli_email());
-        cliente.setCli_endereco(c.getCli_endereco());
-        cliente.setCli_telefone(c.getCli_telefone());
-        cliente.setPet_nome(c.getPet_nome());
-        cliente.setSenha(cliente.getSenha());
-        cliente.setCli_token(-1);
+    private void cadastrarCliente(){
+        ClienteModel cliente = validaInputUsuarioConvertToClienteModel();
 
         databaseReference.child("cliente").child(String.valueOf(cliente.getCli_id())).setValue(cliente);
     }
@@ -77,11 +66,19 @@ public class CadastroClienteActivity extends AppCompatActivity {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                ClienteModel clienteModel = validaInputUsuarioConvertToClienteModel();
+
+                //Alterar mensagem e fazer validação
+                if(clienteModel.getCli_cpf().equals("")){
+                    alertDialog("ATENCÃO", "Falha ao cadastrar usuário.");
+                }
+
                 String strEmail = edtEmail.getText().toString().trim();
                 String strSenha = edtSenha.getText().toString().trim();
 
                 if(!strEmail.trim().equals("") && !strSenha.trim().equals("")) {
-                    criarUser(strEmail, strSenha);
+                    cadastrarUsuario(strEmail, strSenha);
                 }else{
                     alertDialog("ATENCÃO", "Os todos os campos devem ser preenchidos.");
                 }
@@ -90,24 +87,73 @@ public class CadastroClienteActivity extends AppCompatActivity {
         });
     }
 
-    private void criarUser(String strEmail, String strSenha){
+    private ClienteModel validaInputUsuarioConvertToClienteModel() {
+
+        ClienteModel clienteModel = new ClienteModel();
+        ValidaCampos v = new ValidaCampos();
+
+        String strMensagemNome = v.vString(edtNome.toString());
+        String strMensagemEndereco = v.vStringEndereco(edtNome.toString());
+        String strMensagemTelefone = v.vStringTelefone(edtNome.toString());
+        String strMensagemCpf = v.vStringCpf(edtNome.toString());
+        String strMensagemSenha = v.vStringSenha(edtNome.toString());
+        String strMensagemEmail = v.vStringEmail(edtNome.toString());
+
+        if(!strMensagemNome.equals("ok")){
+            alertDialog("ATENÇÃO!", strMensagemNome);
+            return null;
+        }
+        if(!strMensagemCpf.equals("ok")){
+            alertDialog("ATENÇÃO!", strMensagemCpf);
+            return null;
+        }
+        if(!strMensagemEndereco.equals("ok")){
+            alertDialog("ATENÇÃO!", strMensagemEndereco);
+            return null;
+        }
+        if(!strMensagemTelefone.equals("ok")){
+            alertDialog("ATENÇÃO!", strMensagemTelefone);
+            return null;
+        }
+        if(!strMensagemSenha.equals("ok")){
+            alertDialog("ATENÇÃO!",strMensagemSenha);
+            return null;
+        }
+        if(!strMensagemEmail.equals("ok")){
+            alertDialog("ATENÇÃO!",strMensagemEmail);
+            return null;
+        }
+
+        clienteModel.setCli_id(Integer.valueOf(UUID.randomUUID().toString()));
+        clienteModel.setCli_nome(edtNome.getText().toString().trim());
+        clienteModel.setCli_telefone(edtTelefone.getText().toString().trim());
+        clienteModel.setCli_endereco(edtEndereco.getText().toString().trim());
+        clienteModel.setCli_cpf(edtCpf.getText().toString().trim());
+        clienteModel.setCli_email(edtEmail.getText().toString().trim());
+        clienteModel.setCli_senha(edtSenha.getText().toString().trim());
+
+        return clienteModel;
+    }
+
+    private void cadastrarUsuario(String strEmail, String strSenha){
         auth.createUserWithEmailAndPassword(strEmail, strSenha)
-                .addOnCompleteListener(CadastroClienteActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        // task retorna o status da autenticação
-                        if(task.isSuccessful()){
-                            alertToast("Usuário cadastrado com sucesso!");
+            .addOnCompleteListener(CadastroClienteActivity.this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    // task retorna o status da autenticação
+                    if(task.isSuccessful()){
+                        alertToast("Usuário cadastrado com sucesso!");
 
-                            Intent intent = new Intent(CadastroClienteActivity.this, PerfilActivity.class);
-                            startActivity(intent);
-                            finish();
+                        Intent intent = new Intent(CadastroClienteActivity.this, PerfilActivity.class);
+                        startActivity(intent);
+                        finish();
 
-                        }else{
-                            alertToast("Erro ao cadastrar. Tente novamente.");
-                        }
+                    }else{
+                        alertToast("Erro ao cadastrar. Tente novamente.");
                     }
-                });
+                }
+            }
+        );
     }
 
     private void  alertToast(String strMsg){
@@ -133,7 +179,6 @@ public class CadastroClienteActivity extends AppCompatActivity {
         actionBar.setHomeButtonEnabled(true); //habilita click
     }
 
-    //Para inserir a ação e selecionar para qual página voltar...
     @Override
     public boolean onOptionsItemSelected(MenuItem item) { //Botão adicional na ToolBar
         switch (item.getItemId()) {
@@ -152,5 +197,8 @@ public class CadastroClienteActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.cad_usu_ed_email);
         edtNome = findViewById(R.id.cad_usu_ed_nome);
         edtSenha = findViewById(R.id.cad_usu_ed_senha);
+        edtCpf = findViewById(R.id.cad_usu_ed_cpf);
+        edtEndereco = findViewById(R.id.cad_usu_ed_endereco);
+        edtTelefone = findViewById(R.id.cad_usu_ed_telefone);
     }
 }
