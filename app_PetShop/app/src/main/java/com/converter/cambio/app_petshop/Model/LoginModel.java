@@ -4,5 +4,4 @@ public class LoginModel extends ClienteModel {
     private String usu_email;
     private String usu_senha;
     private String token;
-
 }

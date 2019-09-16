@@ -14,16 +14,26 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.converter.cambio.app_petshop.Controller.FireBaseConexao;
+import com.converter.cambio.app_petshop.Model.ClienteModel;
 import com.converter.cambio.app_petshop.R;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.ser.std.UUIDSerializer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.UUID;
 
 public class CadastroClienteActivity extends AppCompatActivity {
     private MaterialButton btnCadastrar;
     private EditText edtEmail, edtNome, edtSenha;
     private FirebaseAuth auth;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +41,30 @@ public class CadastroClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_usuario);
         inicializaComponentes();
         configuraNavBar();
+        inicializarFirebase();
         eventoClicks();
+    }
+
+    private void inicializarFirebase() {
+        FirebaseApp.initializeApp(CadastroClienteActivity.this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+    }
+
+    private void cadastrarCliente(ClienteModel c){
+        ClienteModel cliente = new ClienteModel();
+        cliente.setCli_id(Integer.parseInt(UUID.randomUUID().toString()));
+        cliente.setCli_nome(c.getCli_nome());
+        cliente.setCli_auth_key(String.valueOf(UUID.randomUUID().clockSequence()+cliente.getCli_id()));
+        cliente.setCli_cpf(c.getCli_cpf());
+        cliente.setCli_email(c.getCli_email());
+        cliente.setCli_endereco(c.getCli_endereco());
+        cliente.setCli_telefone(c.getCli_telefone());
+        cliente.setPet_nome(c.getPet_nome());
+        cliente.setSenha(cliente.getSenha());
+        cliente.setCli_token(-1);
+
+        databaseReference.child("cliente").child(String.valueOf(cliente.getCli_id())).setValue(cliente);
     }
 
     @Override
