@@ -34,7 +34,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_margin="20dp"
-                android:textSize="18dp"
                 style="@style/Widget.MaterialComponents.Button"/>
         </RelativeLayout>
 

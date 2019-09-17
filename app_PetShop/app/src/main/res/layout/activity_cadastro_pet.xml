@@ -42,7 +42,7 @@
                 android:id="@+id/cad_usu_ed_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/e_mail" />
+                android:hint="@string/email" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -59,7 +59,7 @@
                 android:id="@+id/cad_usu_ed_senha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/cli_senha" />
+                android:hint="@string/senha" />
         </android.support.design.widget.TextInputLayout>
 
         <RelativeLayout
@@ -73,7 +73,6 @@
                 android:text="@string/cadastrar"
                 android:layout_margin="20dp"
                 android:layout_alignParentEnd="true"
-                android:textSize="18dp"
                 style="@style/Widget.MaterialComponents.Button"/>
 
         </RelativeLayout>

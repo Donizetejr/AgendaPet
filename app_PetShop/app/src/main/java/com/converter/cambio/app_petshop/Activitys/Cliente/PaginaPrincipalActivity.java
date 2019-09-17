@@ -124,8 +124,9 @@ public class PaginaPrincipalActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_sair) {
             FireBaseConexao.logout();
-//            Intent intent = new Intent(PaginaPrincipalActivity.this, LoginClienteActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent(PaginaPrincipalActivity.this, LoginClienteActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         Intent intent = getIntent();

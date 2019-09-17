@@ -44,8 +44,10 @@ public class ValidaCampos {
         else if(strEndereco.trim().length() < 8){
             return "formato de endereço: Rua, Endereço, Cidade - Estado";
         }
-
-        return "ok";
+        if(strEndereco.trim().length() >= 8) {
+            return "ok";
+        }
+        return "Digite o endereço corretamente : Rua, Numero, Bairro, Cidade, Estado";
     }
 
     public String vStringTelefone(String strTelefone) {
@@ -55,10 +57,14 @@ public class ValidaCampos {
         else if(strTelefone.trim().length() < 8){
             return "Digite um telefone válido";
         }
-        return "ok";
+        if(strTelefone.trim().length() >= 8) {
+            return "ok";
+        }
+        return "formato de telefone inválido";
     }
 
     public String vStringCpf(String strCpf) {
+
         if(strCpf.trim().equals("")){
             return "O cmapo Cpf é obrigatório";
         }

@@ -1,14 +1,15 @@
 package com.converter.cambio.app_petshop.Model;
 
 public class ClienteModel extends PetModel{
-    private  int cli_id;
+    private  String cli_id;
     private String cli_cpf;
     private String cli_nome;
     private String cli_telefone;
     private String cli_email;
     private String cli_senha;
+    private String cli_data_ultima_alteracao_senha;
     private String cli_endereco;
-    private int _cli_pet_id;
+    private String _cli_pet_id;
 
     //    private long cli_token;
     //    private String cli_auth_key;
@@ -29,11 +30,11 @@ public class ClienteModel extends PetModel{
 //        this.cli_auth_key = cli_auth_key;
 //    }
 
-    public int getCli_id() {
+    public String getCli_id() {
         return cli_id;
     }
 
-    public void setCli_id(int cli_id) {
+    public void setCli_id(String cli_id) {
         this.cli_id = cli_id;
     }
 
@@ -85,11 +86,19 @@ public class ClienteModel extends PetModel{
         this.cli_endereco = cli_endereco;
     }
 
-    public int get_cli_pet_id() {
+    public String get_cli_pet_id() {
         return _cli_pet_id;
     }
 
-    public void set_cli_pet_id(int _cli_pet_id) {
+    public void set_cli_pet_id(String _cli_pet_id) {
         this._cli_pet_id = _cli_pet_id;
+    }
+
+    public String getCli_data_ultima_alteracao_senha() {
+        return cli_data_ultima_alteracao_senha;
+    }
+
+    public void setCli_data_ultima_alteracao_senha(String cli_data_ultima_alteracao_senha) {
+        this.cli_data_ultima_alteracao_senha = cli_data_ultima_alteracao_senha;
     }
 }

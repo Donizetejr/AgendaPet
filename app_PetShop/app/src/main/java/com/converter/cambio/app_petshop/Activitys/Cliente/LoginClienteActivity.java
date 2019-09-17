@@ -76,13 +76,15 @@ public class LoginClienteActivity extends AppCompatActivity {
     private boolean validaInputUsuario(String strEmail, String strSenha) {
         if(strEmail.trim().equals("") || strSenha.equals("")){
             if (strEmail.equals("") && !strSenha.equals("")){
-                alertDialog("ATENÇÃO!","O E-mail deve ser preenchido!");
+                txtEmail.setError("O E-mail deve ser preenchido!");
                 return true;
             }
             else if(strSenha.equals("") && !strEmail.equals("")){
-                alertDialog("ATENÇÃO!","A Senha deve ser preenchida!");
+                txtSenha.setError("A Senha deve ser preenchida!");
                 return true;
             }
+                txtSenha.setError("A Senha deve ser preenchida!");
+                txtEmail.setError("O E-mail deve ser preenchido!");
                 alertDialog("ATENÇÃO!","Todos os campos devem ser preenchidos!");
             return true;
         }

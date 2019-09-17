@@ -11,7 +11,7 @@
         <item
             android:id="@+id/nav_agendamento"
             android:icon="@mipmap/ic_launcher_add_box"
-            android:title="@string/menu_agendamento" />
+            android:title="@string/agendamento" />
         <item
             android:id="@+id/nav_historico"
             android:icon="@mipmap/ic_launcher_historico"

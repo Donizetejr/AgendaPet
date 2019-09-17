@@ -112,7 +112,6 @@
                 android:text="@string/agendar"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:textSize="18dp"
                 style="@style/Widget.MaterialComponents.Button"/>
 
             <android.support.design.button.MaterialButton
@@ -124,7 +123,6 @@
                 android:layout_toStartOf="@id/age_btn_solicitar"
                 android:layout_toLeftOf="@id/age_btn_solicitar"
                 android:text="@string/limpar"
-                android:textSize="18dp"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
         </RelativeLayout>
 

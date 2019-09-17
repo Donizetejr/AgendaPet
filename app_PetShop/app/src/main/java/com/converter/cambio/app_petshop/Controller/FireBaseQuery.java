@@ -1,23 +1,28 @@
 package com.converter.cambio.app_petshop.Controller;
 
+import com.google.firebase.database.DatabaseReference;
+
 public class FireBaseQuery {
+    private DatabaseReference databaseReference;
 
-    private void InsertDb(){
+    public void InsertObjectDb(Object obj, String tableName, String idObj){
+
+        databaseReference.child(tableName).child(idObj).setValue(obj);
     }
 
-    private void UpdateDb(){
-
-    }
-
-    private void DeleteDb(){
-
-    }
-
-    private void SelectDb(){
+    public void UpdateObjetcDb(){
 
     }
 
-    private void SelectById(){
+    public void DeleteObjectDb(){
+
+    }
+
+    public void SelectObjectDb(){
+
+    }
+
+    public void SelectObjectById(){
 
     }
 }
