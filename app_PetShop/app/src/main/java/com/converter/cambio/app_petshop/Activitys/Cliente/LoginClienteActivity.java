@@ -2,11 +2,11 @@ package com.converter.cambio.app_petshop.Activitys.Cliente;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.button.MaterialButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,33 +14,54 @@ import android.widget.Toast;
 
 import com.converter.cambio.app_petshop.Activitys.ResetSenhaActivity;
 import com.converter.cambio.app_petshop.Controller.FireBaseConexao;
+import com.converter.cambio.app_petshop.Model.ClienteModel;
 import com.converter.cambio.app_petshop.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginClienteActivity extends AppCompatActivity {
 
     private EditText txtEmail, txtSenha;
     private TextView txtEsqueceuSenha;
-    MaterialButton btnCadastrar, btnLogin;
-
+    private DatabaseReference databaseReference;
+    private FirebaseDatabase firebaseDatabase;
+    private MaterialButton btnCadastrar, btnLogin;
+    private ClienteModel cliente = new ClienteModel();
+    private List<ClienteModel> lstCliente = new ArrayList<ClienteModel>();
     private FirebaseAuth auth;
+    private String strIdCliente;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         inicializaComponentes();
+        inicializarFirebase();
         eventosClick();
     }
-
 
     @Override
     protected void onStart() {
         super.onStart();
         auth = FireBaseConexao.getFirebaseAuth();
+    }
+
+    private void inicializarFirebase() {
+        FirebaseApp.initializeApp(LoginClienteActivity.this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
     }
 
     private void eventosClick() {
@@ -91,19 +112,42 @@ public class LoginClienteActivity extends AppCompatActivity {
         return false;
     }
 
-    private void loginFirebase(String strEmail, String strSenha) {
+    private void loginFirebase(final String strEmail, final String strSenha) {
         auth.signInWithEmailAndPassword(strEmail, strSenha)
                 .addOnCompleteListener(LoginClienteActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Intent i = new Intent(LoginClienteActivity.this, PaginaPrincipalActivity.class);
+//                            getClienteId(strEmail);
+                            i.putExtra("ID_USUARIO", strEmail);
                             startActivity(i);
                         }else{
                             altertToast("E-mail ou senha inválidos!");
                         }
                     }
                 });
+    }
+
+    private void getClienteId(String strEmail) {
+
+        databaseReference.child("Cliente").orderByChild("cli_email").equalTo(strEmail).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot objSnapshot:dataSnapshot.getChildren()){
+                    ClienteModel cliente = objSnapshot.getValue(ClienteModel.class);
+
+
+                        strIdCliente = cliente.getCli_id();
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
     }
 
     private void  alertDialog(String strTitle, String strMsg){

@@ -26,6 +26,7 @@ public class PaginaPrincipalActivity extends AppCompatActivity
 
     private Toolbar toolbar;
     private FloatingActionButton fab;
+    private String idUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,6 @@ public class PaginaPrincipalActivity extends AppCompatActivity
         toolbar = findViewById(R.id.toolbar);
         fab = findViewById(R.id.fab);
         drawer = findViewById(R.id.drawer_layout);
-
 
         setSupportActionBar(toolbar);
 
@@ -56,6 +56,12 @@ public class PaginaPrincipalActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        getExtraIdUsuario();
+    }
+
+    private void getExtraIdUsuario() {
+        idUsuario = getIntent().getStringExtra("ID_USUARIO");
     }
 
     private void  alertDialog(String strTitle, String strMsg){
@@ -110,19 +116,28 @@ public class PaginaPrincipalActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_agendamento) {
-            Intent intent = new Intent(PaginaPrincipalActivity.this, AgendamentoActivity.class);
+            Intent intent = new Intent(PaginaPrincipalActivity.this, LocalizaPetSopActivity.class);
+            intent.putExtra("ID_USUARIO", idUsuario);
             startActivity(intent);
         } else if (id == R.id.nav_historico) {
             Intent intent = new Intent(PaginaPrincipalActivity.this, HistoricoAgendamentosActivity.class);
+            intent.putExtra("ID_USUARIO", idUsuario);
             startActivity(intent);
         } else if (id == R.id.nav_perfil) {
             Intent intent = new Intent(PaginaPrincipalActivity.this, PerfilActivity.class);
+            intent.putExtra("ID_USUARIO", idUsuario);
             startActivity(intent);
         } else if (id == R.id.nav_sobre) {
             Intent intent = new Intent(PaginaPrincipalActivity.this, SobreActivity.class);
+            intent.putExtra("ID_USUARIO", idUsuario);
             startActivity(intent);
 
-        } else if (id == R.id.nav_sair) {
+        }else if (id == R.id.nav_pet) {
+            Intent intent = new Intent(PaginaPrincipalActivity.this, CadastroPetActivity.class);
+            intent.putExtra("ID_USUARIO", idUsuario);
+            startActivity(intent);
+
+        }else if (id == R.id.nav_sair) {
             FireBaseConexao.logout();
             Intent intent = new Intent(PaginaPrincipalActivity.this, LoginClienteActivity.class);
             startActivity(intent);

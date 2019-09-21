@@ -27,7 +27,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
-import java.time.chrono.ChronoLocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -67,26 +66,21 @@ public class CadastroClienteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ClienteModel clienteModel = validaInputUsuarioConvertToClienteModel();
+                ClienteModel clienteModel = validaCampos();
 
-                //Alterar mensagem e fazer validação
-                if(clienteModel == null){
-                    alertDialog("ATENCÃO", "Falha ao cadastrar usuário.");
+                if(clienteModel.getCli_id() == null){
+                    alertDialog("ATENCÃO", "Preencha todos os campos.");
+                    return;
                 }
-
-                String strEmail = edtEmail.getText().toString().trim();
-                String strSenha = edtSenha.getText().toString().trim();
-
-                if(!strEmail.trim().equals("") && !strSenha.trim().equals("")) {
+                else{
+                    //Fazer busca no banco para ver se usuario ja é cadastrado
+                }
                     cadastrarUsuario(clienteModel);
-                }else{
-                    alertDialog("ATENCÃO", "Todos os campos devem ser preenchidos.");
-                }
             }
         });
     }
 
-    private ClienteModel validaInputUsuarioConvertToClienteModel() {
+    private ClienteModel validaCampos() {
 
         ClienteModel c = new ClienteModel();
         ValidaCampos v = new ValidaCampos();
@@ -98,23 +92,35 @@ public class CadastroClienteActivity extends AppCompatActivity {
         String strMensagemSenha = v.vStringSenha(edtSenha.getText().toString());
         String strMensagemEmail = v.vStringEmail(edtEmail.getText().toString());
 
+        int contMsg = 0;
+
         if(!strMensagemNome.equals("ok")){
             edtNome.setError(strMensagemNome);
+            contMsg += 1;
         }
         if(!strMensagemCpf.equals("ok")){
             edtCpf.setError(strMensagemNome);
+            contMsg += 1;
         }
         if(!strMensagemEndereco.equals("ok")){
             edtEndereco.setError(strMensagemNome);
+            contMsg += 1;
         }
         if(!strMensagemTelefone.equals("ok")){
             edtTelefone.setError(strMensagemNome);
+            contMsg += 1;
         }
         if(!strMensagemSenha.equals("ok")){
             edtSenha.setError(strMensagemNome);
+            contMsg += 1;
         }
         if(!strMensagemEmail.equals("ok")){
             edtEmail.setError(strMensagemNome);
+            contMsg += 1;
+        }
+
+        if(contMsg > 0){
+            return new ClienteModel();
         }
 
         c.setCli_id(UUID.randomUUID().toString());
@@ -134,24 +140,26 @@ public class CadastroClienteActivity extends AppCompatActivity {
         return c;
     }
 
-    private void cadastrarUsuario(final ClienteModel clienteModel){
+    private void cadastrarUsuario(ClienteModel clienteModel){
+        fireBaseQuery.InsertObjectDb(clienteModel, "Cliente", clienteModel.getCli_id(), databaseReference);
+
+        if(databaseReference.getDatabase() != null){
+            cadastrarLoginUsuario(clienteModel);
+        }
+    }
+
+    private void cadastrarLoginUsuario(final ClienteModel clienteModel){
         auth.createUserWithEmailAndPassword(clienteModel.getCli_email(), clienteModel.getCli_senha())
             .addOnCompleteListener(CadastroClienteActivity.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    // task retorna o status da autenticação
-                    if(task.isSuccessful()){
-                        fireBaseQuery.InsertObjectDb(clienteModel, "Cliente", clienteModel.getCli_id());
-                        limparCampos();
-                        alertToast("Usuário cadastrado com sucesso!");
-
-                        Intent intent = new Intent(CadastroClienteActivity.this, LoginClienteActivity.class);
-                        startActivity(intent);
-                        finish();
-
-                    }else{
-                        alertToast("Erro ao cadastrar. Tente novamente.");
-                    }
+                // task retorna o status da autenticação
+                if(task.isSuccessful()){
+                    limparCampos();
+                    alertToast("Usuário cadastrado com sucesso!");
+                }else{
+                    alertToast("Erro ao cadastrar. Tente novamente.");
+                }
                 }
             }
         );
@@ -210,5 +218,6 @@ public class CadastroClienteActivity extends AppCompatActivity {
         edtCpf = findViewById(R.id.cad_usu_ed_cpf);
         edtEndereco = findViewById(R.id.cad_usu_ed_endereco);
         edtTelefone = findViewById(R.id.cad_usu_ed_telefone);
+        fireBaseQuery  = new FireBaseQuery();
     }
 }

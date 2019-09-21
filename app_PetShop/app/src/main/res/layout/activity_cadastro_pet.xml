@@ -25,7 +25,7 @@
             android:layout_marginVertical="10dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/cad_usu_ed_nome"
+                android:id="@+id/cad_pet_edt_nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/nome" />
@@ -39,13 +39,11 @@
             android:layout_marginVertical="10dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/cad_usu_ed_email"
+                android:id="@+id/cad_pet_edt_raca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email" />
+                android:hint="@string/raca" />
         </android.support.design.widget.TextInputLayout>
-
-
 
         <android.support.design.widget.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -56,18 +54,30 @@
             app:passwordToggleEnabled="true">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/cad_usu_ed_senha"
+                android:id="@+id/cad_pet_edt_idade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/senha" />
+                android:hint="@string/idade" />
         </android.support.design.widget.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/cad_pet_spn_sexo"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_margin="20dp" />
+
+        <Spinner
+            android:id="@+id/cad_pet_spn_porte"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_margin="20dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <android.support.design.button.MaterialButton
-                android:id="@+id/cad_btn_cadastrar"
+                android:id="@+id/cad_pet_btn_cadastrar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cadastrar"

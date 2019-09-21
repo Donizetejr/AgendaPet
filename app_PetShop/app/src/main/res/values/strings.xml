@@ -33,5 +33,8 @@
     <string name="empresa">Empresa</string>
     <string name="servico">Servico</string>
     <string name="log">Log</string>
+    <string name="meu_pet">Meu Pet</string>
+    <string name="raca">Raça</string>
+    <string name="idade">Idade</string>
 
 </resources>

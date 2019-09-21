@@ -1,20 +1,20 @@
 package com.converter.cambio.app_petshop.Model;
 
 public class PetModel {
-    private int pet_id;
+    private String pet_id;
     private String pet_nome;
     private String pet_sexo;
     private String pet_raca;
     private String pet_idade;
-    private String porte;
-    private int pet_cli_id;
+    private String pet_porte;
+//    private String pet_cli_id;
 
 
-    public int getPet_id() {
+    public String getPet_id() {
         return pet_id;
     }
 
-    public void setPet_id(int pet_id) {
+    public void setPet_id(String pet_id) {
         this.pet_id = pet_id;
     }
 
@@ -50,19 +50,19 @@ public class PetModel {
         this.pet_idade = pet_idade;
     }
 
-    public String getPorte() {
-        return porte;
+    public String getPet_porte() {
+        return pet_porte;
     }
 
-    public void setPorte(String porte) {
-        this.porte = porte;
+    public void setPet_porte(String pet_porte) {
+        this.pet_porte = pet_porte;
     }
 
-    public int getPet_cli_id() {
-        return pet_cli_id;
-    }
-
-    public void setPet_cli_id(int pet_cli_id) {
-        this.pet_cli_id = pet_cli_id;
-    }
+//    public String getPet_cli_id() {
+//        return pet_cli_id;
+//    }
+//
+//    public void setPet_cli_id(String pet_cli_id) {
+//        this.pet_cli_id = pet_cli_id;
+//    }
 }

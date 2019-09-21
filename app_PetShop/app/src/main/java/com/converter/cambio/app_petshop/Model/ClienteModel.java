@@ -9,7 +9,7 @@ public class ClienteModel extends PetModel{
     private String cli_senha;
     private String cli_data_ultima_alteracao_senha;
     private String cli_endereco;
-    private String _cli_pet_id;
+//    private String _cli_pet_id;
 
     //    private long cli_token;
     //    private String cli_auth_key;
@@ -86,13 +86,13 @@ public class ClienteModel extends PetModel{
         this.cli_endereco = cli_endereco;
     }
 
-    public String get_cli_pet_id() {
-        return _cli_pet_id;
-    }
-
-    public void set_cli_pet_id(String _cli_pet_id) {
-        this._cli_pet_id = _cli_pet_id;
-    }
+//    public String get_cli_pet_id() {
+//        return _cli_pet_id;
+//    }
+//
+//    public void set_cli_pet_id(String _cli_pet_id) {
+//        this._cli_pet_id = _cli_pet_id;
+//    }
 
     public String getCli_data_ultima_alteracao_senha() {
         return cli_data_ultima_alteracao_senha;
